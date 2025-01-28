@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Card, CardHeader, CardTitle } from "./components/ui/card";
+import { Button } from "./components/ui/button";
+import { Input } from "./components/ui/input";
 import { Calculator, Home, Coins, PiggyBank } from "lucide-react";
 
 // -------------------------------------------------
