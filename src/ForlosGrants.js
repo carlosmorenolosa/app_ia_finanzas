@@ -10,7 +10,7 @@ import { ScrollArea } from './components/ui/scroll-area'; // Cambiada de alias a
 const sampleMessages = [
   {
     sender: 'PymerIA',
-    content: '¡Hola! Soy PymerIA, tu asistente virtual. ¿En qué puedo ayudarte hoy?'
+    content: '¡Hola! Soy PymerIA, el asistente inteligente de esta empresa. ¿Tienes alguna duda con nuestros servicios? ¡Cuéntame!'
   }
 ];
 
