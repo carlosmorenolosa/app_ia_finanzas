@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from './components/ui/card';
 import { Button } from './components/ui/button';
-import { Input } from './components/ui/input'; // Cambiada de alias a relativa
-import { ScrollArea } from './components/ui/scroll-area'; // Cambiada de alias a relativa
-
+import { Input } from './components/ui/input';
+import { ScrollArea } from './components/ui/scroll-area';
 
 // Mensajes de ejemplo: solo un mensaje inicial
 const sampleMessages = [
@@ -14,33 +13,65 @@ const sampleMessages = [
   }
 ];
 
+// URL de la API Gateway y API Key
+const LAMBDA_URL = "https://go066mldzb.execute-api.eu-west-1.amazonaws.com";
+const API_KEY = "jR72QE1yTW2gMIvIy5IZt5YJsVaN9Puz7X7PxcaF";
+
 export default function InterfazGraficaPymerIA() {
   const [messages, setMessages] = useState(sampleMessages);
   const [currentInput, setCurrentInput] = useState('');
 
-  // Función para enviar mensaje del usuario
-  const handleSendMessage = () => {
+  // Función para enviar mensaje del usuario y obtener respuesta de Lambda
+  const handleSendMessage = async () => {
     if (!currentInput.trim()) return;
+
+    // Añade el mensaje del usuario al historial
     const newMessage = {
       sender: 'User',
-      content: currentInput.trim()
+      content: currentInput.trim(),
     };
 
-    setMessages((prev) => [...prev, newMessage]);
+    // Limitar el historial a los últimos 20 mensajes
+    const updatedMessages = [...messages, newMessage].slice(-20);
+    setMessages(updatedMessages);
     setCurrentInput('');
 
-    // Simular respuesta de PymerIA
-    setTimeout(() => {
+    try {
+      // Solicitud a la Lambda con la API Key
+      const response = await fetch(LAMBDA_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': API_KEY,
+        },
+        body: JSON.stringify({ conversation: updatedMessages }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al conectar con el servidor');
+      }
+
+      const data = await response.json(); // Respuesta de la Lambda
+
+      // Añade la respuesta de la Lambda al historial
       const pymerIAResponse = {
         sender: 'PymerIA',
-        content: `Aquí está tu respuesta sobre "${newMessage.content}".`
+        content: data.response || 'No tengo una respuesta para eso en este momento.',
       };
       setMessages((prev) => [...prev, pymerIAResponse]);
-    }, 1000);
+    } catch (error) {
+      // Manejo de errores
+      const errorMessage = {
+        sender: 'PymerIA',
+        content: 'Hubo un problema al procesar tu solicitud. Inténtalo de nuevo más tarde.',
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+      console.error('Error al llamar a la Lambda:', error);
+    }
   };
 
   // Enviar mensaje al presionar Enter
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleSendMessage();
     }
