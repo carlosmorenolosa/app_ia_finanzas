@@ -14,7 +14,7 @@ const sampleMessages = [
 ];
 
 // URL de la API Gateway y API Key
-const LAMBDA_URL = "https://go066mldzb.execute-api.eu-west-1.amazonaws.com";
+const LAMBDA_URL = "https://go066mldzb.execute-api.eu-west-1.amazonaws.com/prod";
 const API_KEY = "jR72QE1yTW2gMIvIy5IZt5YJsVaN9Puz7X7PxcaF";
 
 export default function InterfazGraficaPymerIA() {
