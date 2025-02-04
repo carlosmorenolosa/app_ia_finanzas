@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from './components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { Button } from './components/ui/button';
+import { Input } from './components/ui/input'; // Cambiada de alias a relativa
+import { ScrollArea } from './components/ui/scroll-area'; // Cambiada de alias a relativa
+
 
 // Mensajes de ejemplo: solo un mensaje inicial
 const sampleMessages = [
