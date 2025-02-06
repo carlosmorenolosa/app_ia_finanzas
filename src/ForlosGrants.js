@@ -4,6 +4,8 @@ import { Card, CardContent } from './components/ui/card';
 import { Button } from './components/ui/button';
 import { Input } from './components/ui/input';
 import { ScrollArea } from './components/ui/scroll-area';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 // Mensajes de ejemplo: solo un mensaje inicial
 const sampleMessages = [
@@ -99,7 +101,12 @@ export default function InterfazGraficaPymerIA() {
             }`}
           >
             <p className="text-sm font-semibold mb-1">{msg.sender}</p>
-            <p className="text-sm leading-normal">{msg.content}</p>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              className="prose text-sm leading-normal"
+            >
+              {msg.content}
+            </ReactMarkdown>
           </motion.div>
         ))}
       </ScrollArea>
