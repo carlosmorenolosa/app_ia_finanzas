@@ -11,7 +11,7 @@ import remarkGfm from 'remark-gfm';
 const sampleMessages = [
   {
     sender: 'PymerIA',
-    content: '¡Hola! Soy PymerIA, el asistente inteligente de esta empresa. ¿Tienes alguna duda con nuestros servicios? ¡Cuéntame!'
+    content: '¡Hola! Soy PymerIA, el asistente inteligente de IA4PYMES. ¿Quieres saber sobre nuestros servicios? ¡Pregúntame!'
   }
 ];
 
@@ -80,10 +80,10 @@ export default function InterfazGraficaPymerIA() {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-gray-100 text-gray-800">
-      {/* Barra superior mínima */}
-      <header className="flex items-center justify-center bg-white py-3 border-b">
-        <h1 className="font-semibold text-lg">PymerIA</h1>
+    <div className="h-screen w-screen flex flex-col bg-[#0f0f0f] text-white">
+      {/* Encabezado */}
+      <header className="flex items-center justify-center bg-[#1a1a1a] py-3 border-b border-[#333]">
+        <h1 className="font-semibold text-lg text-indigo-400">PymerIA</h1>
       </header>
 
       {/* Zona de mensajes */}
@@ -94,16 +94,19 @@ export default function InterfazGraficaPymerIA() {
             initial={{ opacity: 0, x: msg.sender === 'User' ? 50 : -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
-            className={`my-2 p-3 rounded-lg max-w-3xl break-words shadow-sm ${
+            className={`my-2 p-4 rounded-2xl max-w-3xl break-words shadow-md transition-all ${
               msg.sender === 'User'
-                ? 'bg-blue-100 self-end ml-auto text-right'
-                : 'bg-gray-200 self-start'
+                ? 'bg-indigo-600 self-end ml-auto text-right text-white'
+                : 'bg-[#1e1e1e] self-start text-left text-gray-100'
             }`}
           >
-            <p className="text-sm font-semibold mb-1">{msg.sender}</p>
+            {/* Mostrar solo nombre si NO es el usuario */}
+            {msg.sender !== 'User' && (
+              <p className="text-sm font-semibold mb-1 text-indigo-300">{msg.sender}</p>
+            )}
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              className="prose text-sm leading-normal"
+              className="prose prose-sm max-w-none text-white"
             >
               {msg.content}
             </ReactMarkdown>
@@ -111,23 +114,27 @@ export default function InterfazGraficaPymerIA() {
         ))}
       </ScrollArea>
 
-      {/* Barra de entrada de mensajes */}
-      <div className="w-full bg-white border-t p-4">
-        <Card className="bg-white shadow-sm">
+      {/* Barra de entrada */}
+      <div className="w-full bg-[#1a1a1a] border-t border-[#333] p-4">
+        <Card className="bg-[#1e1e1e] border border-[#333] shadow-md">
           <CardContent className="p-2 flex">
             <Input
               value={currentInput}
               onChange={(e) => setCurrentInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Escribe tu mensaje..."
-              className="flex-1"
+              className="flex-1 bg-[#121212] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500"
             />
-            <Button onClick={handleSendMessage} variant="default" className="ml-2">
+            <Button
+              onClick={handleSendMessage}
+              className="ml-2 bg-indigo-600 text-white hover:bg-indigo-500"
+            >
               Enviar
             </Button>
           </CardContent>
         </Card>
       </div>
     </div>
+
   );
 }
