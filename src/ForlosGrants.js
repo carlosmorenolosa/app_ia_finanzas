@@ -11,7 +11,7 @@ import remarkGfm from 'remark-gfm';
 const sampleMessages = [
   {
     sender: 'PymerIA',
-    content: '¡Hola! Soy PymerIA, el asistente inteligente de IA4PYMES. ¿Quieres saber sobre nuestros servicios? ¡Pregúntame!'
+    content: '👋 ¡Hola! Soy PymerIA, el asistente inteligente de IA4PYMES. ¿Quieres saber sobre nuestros servicios? ¡Pregúntame! 🤖'
   }
 ];
 
