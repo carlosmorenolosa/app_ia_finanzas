@@ -116,18 +116,18 @@ export default function InterfazGraficaPymerIA() {
 
       {/* Barra de entrada */}
       <div className="w-full bg-[#1a1a1a] border-t border-[#333] p-4">
-        <Card className="bg-[#1e1e1e] border border-[#333] shadow-md">
+        <Card className="bg-[#1e1e1e] border border-[#333] shadow-md rounded-2xl"> {/* ✅ redondeado aquí */}
           <CardContent className="p-2 flex">
             <Input
               value={currentInput}
               onChange={(e) => setCurrentInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Escribe tu mensaje..."
-              className="flex-1 bg-[#121212] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500"
+              className="flex-1 bg-[#121212] text-white border border-[#333] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-xl" // ✅ aquí
             />
             <Button
               onClick={handleSendMessage}
-              className="ml-2 bg-indigo-600 text-white hover:bg-indigo-500"
+              className="ml-2 bg-indigo-600 text-white hover:bg-indigo-500 rounded-xl" // ✅ aquí también
             >
               Enviar
             </Button>
