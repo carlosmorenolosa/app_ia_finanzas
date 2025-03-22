@@ -94,11 +94,12 @@ export default function InterfazGraficaPymerIA() {
             initial={{ opacity: 0, x: msg.sender === 'User' ? 50 : -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
-            className={`my-2 p-4 rounded-2xl max-w-3xl break-words shadow-md transition-all ${
+            className={`my-2 px-4 py-2 rounded-2xl break-words shadow-md inline-block max-w-[80%] ${
               msg.sender === 'User'
                 ? 'bg-indigo-600 self-end ml-auto text-right text-white'
                 : 'bg-[#1e1e1e] self-start text-left text-gray-100'
             }`}
+            
           >
             {/* Mostrar solo nombre si NO es el usuario */}
             {msg.sender !== 'User' && (
