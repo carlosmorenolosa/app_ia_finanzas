@@ -130,7 +130,21 @@ export default function InterfazGraficaPymerIA() {
             onClick={handleSendMessage}
             className="h-8 w-8 p-0 bg-indigo-600 text-white hover:bg-indigo-500 rounded-full flex items-center justify-center"
           >
-            <Send className="h-4 w-4" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 10l9 4-9 4V6l9 4 9-4-9 12"
+              />
+            </svg>
+
           </Button>
         </div>
       </div>
