@@ -87,7 +87,7 @@ export default function InterfazGraficaPymerIA() {
       </header>
 
       {/* Zona de mensajes */}
-      <ScrollArea className="flex-1 p-4">
+      <ScrollArea className="flex-1 p-4 flex flex-col space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-[#2a2a2a]">
         {messages.map((msg, index) => (
           <motion.div
             key={index}
@@ -107,7 +107,7 @@ export default function InterfazGraficaPymerIA() {
             )}
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              className="prose prose-sm max-w-none text-white"
+              className="prose prose-sm max-w-none text-white prose-strong:text-indigo-300"
             >
               {msg.content}
             </ReactMarkdown>
@@ -116,25 +116,25 @@ export default function InterfazGraficaPymerIA() {
       </ScrollArea>
 
       {/* Barra de entrada */}
-      <div className="w-full bg-[#1a1a1a] border-t border-[#333] p-4">
-        <Card className="bg-[#1e1e1e] border border-[#333] shadow-md">
-          <CardContent className="p-2 flex">
-            <Input
-              value={currentInput}
-              onChange={(e) => setCurrentInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Escribe tu mensaje..."
-              className="flex-1 bg-[#121212] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500"
-            />
-            <Button
-              onClick={handleSendMessage}
-              className="ml-2 bg-indigo-600 text-white hover:bg-indigo-500"
-            >
-              Enviar
-            </Button>
-          </CardContent>
-        </Card>
+      <div className="w-full bg-[#1a1a1a] border-t border-[#333] px-3 py-1">
+        <div className="flex items-center gap-2">
+          <Input
+            value={currentInput}
+            onChange={(e) => setCurrentInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Escribe tu mensaje..."
+            className="flex-1 h-8 bg-[#121212] text-white border border-[#444] rounded-md px-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          />
+          <Button
+            onClick={handleSendMessage}
+            className="h-8 px-3 text-sm bg-indigo-600 text-white hover:bg-indigo-500 rounded-md"
+          >
+            Enviar
+          </Button>
+        </div>
       </div>
+
+
     </div>
 
   );
