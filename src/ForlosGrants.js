@@ -129,7 +129,7 @@ export default function InterfazGraficaPymerIA() {
             onClick={handleSendMessage}
             className="h-8 w-8 p-0 bg-indigo-600 text-white hover:bg-indigo-500 rounded-full flex items-center justify-center text-lg"
           >
-            ✈️
+            ➤
           </Button>
 
         </div>
