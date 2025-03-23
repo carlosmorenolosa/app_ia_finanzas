@@ -116,7 +116,7 @@ export default function InterfazGraficaPymerIA() {
       </ScrollArea>
 
       {/* Barra de entrada */}
-      <div className="w-full bg-[#1a1a1a] border-t border-[#333] px-3 py-1 pb-4">
+      <div className="w-full bg-[#1a1a1a] border-t border-[#333] px-3 pt-2 pb-4">
         <div className="flex items-center gap-2">
           <Input
             value={currentInput}
