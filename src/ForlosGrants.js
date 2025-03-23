@@ -6,6 +6,7 @@ import { Input } from './components/ui/input';
 import { ScrollArea } from './components/ui/scroll-area';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Send } from 'lucide-react';
 
 // Mensajes de ejemplo: solo un mensaje inicial
 const sampleMessages = [
@@ -127,9 +128,9 @@ export default function InterfazGraficaPymerIA() {
           />
           <Button
             onClick={handleSendMessage}
-            className="h-8 px-3 text-sm bg-indigo-600 text-white hover:bg-indigo-500 rounded-md"
+            className="h-8 w-8 p-0 bg-indigo-600 text-white hover:bg-indigo-500 rounded-full flex items-center justify-center"
           >
-            Enviar
+            <Send className="h-4 w-4" />
           </Button>
         </div>
       </div>
