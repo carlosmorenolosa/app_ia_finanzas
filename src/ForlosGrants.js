@@ -109,7 +109,11 @@ export default function InterfazGraficaPymerIA() {
             )}
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              className="prose prose-sm max-w-none text-gray-800 prose-strong:text-[#003d8e]"
+              className={`prose prose-sm max-w-none ${
+                msg.sender === 'User'
+                  ? 'text-white prose-strong:text-white'
+                  : 'text-gray-800 prose-strong:text-[#003d8e]'
+              }`}
             >
               {msg.content}
             </ReactMarkdown>
