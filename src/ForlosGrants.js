@@ -80,11 +80,12 @@ export default function InterfazGraficaPymerIA() {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-[#0f0f0f] text-white">
+    <div className="h-screen w-screen flex flex-col bg-white text-gray-800">
       {/* Encabezado */}
-      <header className="flex items-center justify-center bg-[#1a1a1a] py-3 border-b border-[#333]">
-        <h1 className="font-semibold text-lg text-indigo-400">PymerIA</h1>
+      <header className="flex items-center justify-center bg-[#003d8e] py-3">
+        <h1 className="font-semibold text-lg text-white">PymerIA</h1>
       </header>
+
 
       {/* Zona de mensajes */}
       <ScrollArea className="flex-1 p-4 flex flex-col space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-[#2a2a2a]">
@@ -96,18 +97,19 @@ export default function InterfazGraficaPymerIA() {
             transition={{ duration: 0.3 }}
             className={`my-2 px-4 py-2 rounded-2xl break-words shadow-md w-fit max-w-[80%] ${
               msg.sender === 'User'
-                ? 'bg-indigo-600 self-end ml-auto text-right text-white'
-                : 'bg-[#1e1e1e] self-start text-left text-gray-100'
+                ? 'bg-[#003d8e] self-end ml-auto text-right text-white'
+                : 'bg-[#f0f4ff] self-start text-left text-gray-800'
+
             }`}
             
           >
             {/* Mostrar solo nombre si NO es el usuario */}
             {msg.sender !== 'User' && (
-              <p className="text-sm font-semibold mb-1 text-indigo-300">{msg.sender}</p>
+              <p className="text-sm font-semibold mb-1 text-[#003d8e]">{msg.sender}</p>
             )}
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              className="prose prose-sm max-w-none text-white prose-strong:text-indigo-300"
+              className="prose prose-sm max-w-none text-gray-800 prose-strong:text-[#003d8e]"
             >
               {msg.content}
             </ReactMarkdown>
@@ -116,18 +118,18 @@ export default function InterfazGraficaPymerIA() {
       </ScrollArea>
 
       {/* Barra de entrada */}
-      <div className="w-full bg-[#1a1a1a] border-t border-[#333] px-3 pt-2 pb-4">
+      <div className="w-full bg-gray-100 border-t border-gray-200 px-3 pt-2 pb-4">
         <div className="flex items-center gap-2">
           <Input
             value={currentInput}
             onChange={(e) => setCurrentInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Escribe tu mensaje..."
-            className="flex-1 h-8 bg-[#121212] text-white border border-[#444] rounded-md px-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="flex-1 h-8 bg-white text-gray-800 border border-gray-300 rounded-md px-3 text-sm placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-[#003d8e]"
           />
           <Button
             onClick={handleSendMessage}
-            className="h-8 w-8 p-0 bg-indigo-600 text-white hover:bg-indigo-500 rounded-full flex items-center justify-center text-lg"
+            className="h-8 w-8 p-0 bg-[#003d8e] text-white hover:bg-[#002c6e] rounded-full flex items-center justify-center text-lg"
           >
             ➤
           </Button>
